@@ -123,3 +123,24 @@ function renderProducts() {
 }
 
 renderProducts(); // executes when the page loads to display the products on the page
+
+const cartList = [
+  { name: "Waffle with Berries", price: 6.5, count: 1 },
+  { name: "Vanilla Bean Crème Brûlée", price: 7.0, count: 1 }
+];
+
+function renderCart(cartList) {
+  const cartContainer = document.querySelector("#cart-list");
+  cartContainer.innerHTML = ""; // Clear previous cart items
+
+  cartList.forEach((item) => {
+    const cartItem = document.createElement("li");
+    cartItem.innerHTML = `
+    <h3>${item.name}</h3>
+    <p>${item.count}x $${item.price.toFixed(2)} </p>
+    <button class="remove-from-cart">x</button>
+    `;
+    cartContainer.appendChild(cartItem);
+  });
+}
+renderCart(cartList); // executes when the page loads to display the cart items on the page
